@@ -1,0 +1,20 @@
+{
+	"name": "99_CONSUMO_SERVERLESS",
+	"properties": {
+		"folder": {
+			"name": "ANDRE/01_SERVERLESS"
+		},
+		"content": {
+			"query": "SELECT * FROM sys.dm_external_data_processed\n\n\n\nselect \n\nlogin_name,\n\n(substring(convert(varchar(10), start_time,103), 4, 10)) Data, \n\nsum(data_processed_mb) sum_data_processed_mb\n\nfrom sys.dm_exec_requests_history \n\ngroup by login_name, (substring(convert(varchar(10), start_time,103), 4, 10))",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
