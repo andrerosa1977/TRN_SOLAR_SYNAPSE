@@ -1,6 +1,9 @@
 {
 	"name": "Carga Delta",
 	"properties": {
+		"folder": {
+			"name": "Andre"
+		},
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"sessionProperties": {
@@ -13,7 +16,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "74529564-9e6c-4095-9f65-223fa2c9d0e3"
+				"spark.autotune.trackingId": "22b6335a-0fa0-478a-980b-ba4f6afbeb8f"
 			}
 		},
 		"metadata": {
