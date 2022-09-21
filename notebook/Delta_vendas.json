@@ -1,6 +1,9 @@
 {
 	"name": "Delta_vendas",
 	"properties": {
+		"folder": {
+			"name": "Andre"
+		},
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"sessionProperties": {
@@ -13,7 +16,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "aa836627-ffad-4227-bcbe-1f29c69442a1"
+				"spark.autotune.trackingId": "a74167dd-89e6-4a05-b415-eb63304e6cc0"
 			}
 		},
 		"metadata": {
