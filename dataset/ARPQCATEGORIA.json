@@ -1,0 +1,24 @@
+{
+	"name": "ARPQCATEGORIA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlstrnsolar001-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "andre/destino"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "bronze/categoria",
+				"fileSystem": "treinamento"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

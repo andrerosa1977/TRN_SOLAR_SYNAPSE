@@ -1,0 +1,21 @@
+{
+	"name": "VCPQVENDAS_ITENS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlstrnsolar001-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Bronze/Vendas_Itens",
+				"fileSystem": "vagner"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

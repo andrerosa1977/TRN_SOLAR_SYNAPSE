@@ -1,0 +1,31 @@
+{
+	"name": "VCCIDADE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OLTP_MINIERP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID_CIDADE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NOME_CIDADE",
+				"type": "varchar"
+			},
+			{
+				"name": "UF",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CIDADE"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

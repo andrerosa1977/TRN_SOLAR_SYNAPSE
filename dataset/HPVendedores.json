@@ -1,0 +1,33 @@
+{
+	"name": "HPVendedores",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OLTP_MINIERP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID_VENDEDOR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NOME_VENDEDOR",
+				"type": "varchar"
+			},
+			{
+				"name": "SALARIO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "VENDEDORES"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,103 @@
+{
+	"name": "HPDFCRM",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "HPCSVCRM",
+						"type": "DatasetReference"
+					},
+					"name": "SRCHPCRM"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "HPSaidaCRMCSV01",
+						"type": "DatasetReference"
+					},
+					"name": "sinkcsvhp01"
+				},
+				{
+					"dataset": {
+						"referenceName": "HPSaidaCRMPQ01",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SelecionarColunas"
+				},
+				{
+					"name": "split1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as string,",
+				"          primeiro_nome as string,",
+				"          ultimo_nome as string,",
+				"          email as string,",
+				"          sexo as string,",
+				"          cidade as string,",
+				"          pais as string,",
+				"          codigo_pais as string,",
+				"          Time_zone as string,",
+				"          empresa as string,",
+				"          profissao as string,",
+				"          etnia as string,",
+				"          idioma as string,",
+				"          montadora as string,",
+				"          carro as string,",
+				"          ano as string,",
+				"          nascimento as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SRCHPCRM",
+				"SRCHPCRM select(mapColumn(",
+				"          id,",
+				"          primeiro_nome,",
+				"          ultimo_nome,",
+				"          email,",
+				"          sexo,",
+				"          cidade,",
+				"          pais,",
+				"          codigo_pais,",
+				"          Time_zone,",
+				"          empresa,",
+				"          profissao,",
+				"          idioma,",
+				"          montadora,",
+				"          carro,",
+				"          ano,",
+				"          Dtnascimento = nascimento",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SelecionarColunas",
+				"SelecionarColunas split(toInteger(ano) <= 1970,",
+				"     toInteger(ano) > 1970,",
+				"     disjoint: false) ~> split1@(Ate1970, Apos1970)",
+				"split1@Ate1970 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sinkcsvhp01",
+				"split1@Apos1970 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

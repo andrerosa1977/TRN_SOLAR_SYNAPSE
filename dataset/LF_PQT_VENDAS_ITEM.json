@@ -1,0 +1,24 @@
+{
+	"name": "LF_PQT_VENDAS_ITEM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlstrnsolar001-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "lianderson/destino"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "bronze/vendas_item",
+				"fileSystem": "lianderson"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

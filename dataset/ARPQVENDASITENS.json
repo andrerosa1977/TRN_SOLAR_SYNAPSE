@@ -1,0 +1,21 @@
+{
+	"name": "ARPQVENDASITENS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlstrnsolar001-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "bronze/vendas_itens",
+				"fileSystem": "treinamento"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

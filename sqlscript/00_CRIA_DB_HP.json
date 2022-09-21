@@ -1,0 +1,20 @@
+{
+	"name": "00_CRIA_DB_HP",
+	"properties": {
+		"folder": {
+			"name": "HELENA"
+		},
+		"content": {
+			"query": "--CRIA DATABASE\nCREATE DATABASE DBHELENA",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "DBHELENA",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

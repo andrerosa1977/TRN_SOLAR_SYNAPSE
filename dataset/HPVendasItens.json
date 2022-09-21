@@ -1,0 +1,51 @@
+{
+	"name": "HPVendasItens",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OLTP_MINIERP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "NUM_VENDA",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NUM_SEQ",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ID_PROD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "QTDE",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "VAL_UNIT",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "VAL_TOTAL",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "VENDA_ITENS"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

@@ -1,0 +1,20 @@
+{
+	"name": "00_create_db",
+	"properties": {
+		"folder": {
+			"name": "Vagner/01_SERVERLESS"
+		},
+		"content": {
+			"query": "--CREATE DATABASE\nCREATE DATABASE VAGNER",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "vagner",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

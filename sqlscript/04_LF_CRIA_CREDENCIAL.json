@@ -1,0 +1,20 @@
+{
+	"name": "04_LF_CRIA_CREDENCIAL",
+	"properties": {
+		"folder": {
+			"name": "Lianderson"
+		},
+		"content": {
+			"query": "-- Create master key in databases with some password (one-off per database)\nUSE Lianderson;\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'TREINAMENTOSOLAR2022@!'\nGO\n\n--CRIAÇÃO DE CREDENTIAL\n--Entrar no datalake e gerar chave SAS\nUSE Lianderson;\nCREATE DATABASE SCOPED CREDENTIAL SASADLSTRNSOLAR\n WITH IDENTITY = 'SHARED ACCESS SIGNATURE',\n--GERADO SECRET VIA SAS\n SECRET = 'sp=racwdlmeop&st=2022-09-21T15:44:55Z&se=2022-09-21T23:44:55Z&spr=https&sv=2021-06-08&sr=c&sig=qpCNE28DYsf2BOvTPBy4zqkeW0FpWlm1VPQbHVbNVRY%3D'\n GO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "Lianderson",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"name": "HPPQVendas_Itens",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adlstrnsolar001-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "bronze/vendas_itens",
+				"fileSystem": "helena"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

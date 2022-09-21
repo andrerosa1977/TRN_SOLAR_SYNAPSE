@@ -1,0 +1,30 @@
+{
+	"name": "ARCATEGORIA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OLTP_MINIERP",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "andre/origem"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID_CATEGORIA",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NOME_CATEGORIA",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CATEGORIA"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

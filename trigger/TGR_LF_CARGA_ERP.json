@@ -1,0 +1,24 @@
+{
+	"name": "TGR_LF_CARGA_ERP",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "01_CARGA_ERP_CATEGORIA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2022-09-20T01:00:00",
+				"timeZone": "E. South America Standard Time"
+			}
+		}
+	}
+}

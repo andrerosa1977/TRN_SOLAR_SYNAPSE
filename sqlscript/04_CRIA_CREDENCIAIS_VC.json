@@ -1,0 +1,20 @@
+{
+	"name": "04_CRIA_CREDENCIAIS_VC",
+	"properties": {
+		"folder": {
+			"name": "Vagner/01_SERVERLESS"
+		},
+		"content": {
+			"query": "-- Create master key in databases with some password (one-off per database)\nUSE VAGNER;\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'TREINAMENTOSOLAR2022@!'\nGO\n\n--CRIAÇÃO DE CREDENTIAL\n--Entrar no datalake e gerar chave SAS\nUSE VAGNER;\nCREATE DATABASE SCOPED CREDENTIAL SASADLSTRNSOLAR\n WITH IDENTITY = 'SHARED ACCESS SIGNATURE',\n--GERADO SECRET VIA SAS\n SECRET = 'sp=racwdlmeop&st=2022-09-21T15:41:11Z&se=2022-10-31T23:41:11Z&spr=https&sv=2021-06-08&sr=c&sig=ureeC3ItHE9Jiq6DiMGt8Z2CAPgv6IK6ZHM0XFRV054%3D'\n GO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "vagner",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "01_CRIA_SCHEMAS_HP",
+	"properties": {
+		"folder": {
+			"name": "HELENA"
+		},
+		"content": {
+			"query": "CREATE SCHEMA BRONZE\nGO\nCREATE SCHEMA SILVER\nGO\nCREATE SCHEMA GOLD\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "DBHELENA",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

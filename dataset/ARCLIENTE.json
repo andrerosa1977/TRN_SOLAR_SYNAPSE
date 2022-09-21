@@ -1,0 +1,44 @@
+{
+	"name": "ARCLIENTE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OLTP_MINIERP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID_CLIENTE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "NOME_CLIENTE",
+				"type": "varchar"
+			},
+			{
+				"name": "ENDERECO",
+				"type": "varchar"
+			},
+			{
+				"name": "NUMERO",
+				"type": "varchar"
+			},
+			{
+				"name": "ID_CIDADE",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CEP",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CLIENTE"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

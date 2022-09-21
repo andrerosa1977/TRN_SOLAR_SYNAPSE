@@ -1,0 +1,109 @@
+{
+	"name": "LF_DF_CRM",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "LF_CSV_CRM",
+						"type": "DatasetReference"
+					},
+					"name": "CRM"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CRM_ATE1970",
+						"type": "DatasetReference"
+					},
+					"name": "CSVATE1970"
+				},
+				{
+					"dataset": {
+						"referenceName": "CRM_MAIOR1970",
+						"type": "DatasetReference"
+					},
+					"name": "CSVMAIOR1970"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "split1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as string,",
+				"          primeiro_nome as string,",
+				"          ultimo_nome as string,",
+				"          email as string,",
+				"          sexo as string,",
+				"          cidade as string,",
+				"          pais as string,",
+				"          codigo_pais as string,",
+				"          Time_zone as string,",
+				"          empresa as string,",
+				"          profissao as string,",
+				"          etnia as string,",
+				"          idioma as string,",
+				"          montadora as string,",
+				"          carro as string,",
+				"          ano as string,",
+				"          nascimento as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CRM",
+				"CRM select(mapColumn(",
+				"          id,",
+				"          primeiro_nome,",
+				"          ultimo_nome,",
+				"          email,",
+				"          sexo,",
+				"          cidade,",
+				"          pais,",
+				"          codigo_pais,",
+				"          Time_zone,",
+				"          empresa,",
+				"          profissao,",
+				"          etnia,",
+				"          idioma,",
+				"          montadora,",
+				"          carro,",
+				"          ano,",
+				"          nascimento",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 split(ano <= '1970',",
+				"     ano > '1970',",
+				"     disjoint: false) ~> split1@(ATE1970, ACIMA1970)",
+				"split1@ATE1970 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Column_1 as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> CSVATE1970",
+				"split1@ACIMA1970 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          {id;primeiro_nome;ultimo_nome;email;sexo;cidade;pais;codigo_pais;Time_zone;empresa;profissao;etnia;idioma;montadora;carro;ano;nascimento} as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> CSVMAIOR1970"
+			]
+		}
+	}
+}

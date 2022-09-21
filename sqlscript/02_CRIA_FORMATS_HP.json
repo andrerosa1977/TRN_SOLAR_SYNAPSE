@@ -1,0 +1,20 @@
+{
+	"name": "02_CRIA_FORMATS_HP",
+	"properties": {
+		"folder": {
+			"name": "HELENA"
+		},
+		"content": {
+			"query": "-- CRIA FORMATO PARQUET \nIF NOT EXISTS (SELECT * FROM sys.external_file_formats \nWHERE name = 'ParquetFormat') \n    CREATE EXTERNAL FILE FORMAT [ParquetFormat] \n    WITH ( FORMAT_TYPE = PARQUET) \nGO \n\n--CRIA FORMATO CSV SKIP CABECALHO \nIF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'skipHeader_CSV') \nCREATE EXTERNAL FILE FORMAT skipHeader_CSV \n    WITH (FORMAT_TYPE = DELIMITEDTEXT, \n          FORMAT_OPTIONS( \n                FIELD_TERMINATOR = ',', \n                STRING_DELIMITER = '\"', \n                FIRST_ROW = 2, \n                USE_TYPE_DEFAULT = True) \n    )",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "DBHELENA",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

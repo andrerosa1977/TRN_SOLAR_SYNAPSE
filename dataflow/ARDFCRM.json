@@ -1,0 +1,103 @@
+{
+	"name": "ARDFCRM",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ARCSVCRM",
+						"type": "DatasetReference"
+					},
+					"name": "SRCCRMAR"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ARSAIDACSVCRM",
+						"type": "DatasetReference"
+					},
+					"name": "sink1csvar"
+				},
+				{
+					"dataset": {
+						"referenceName": "ARPQCRM",
+						"type": "DatasetReference"
+					},
+					"name": "sink2pacsvar"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SELECIONARCOLUNAS"
+				},
+				{
+					"name": "split1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as string,",
+				"          primeiro_nome as string,",
+				"          ultimo_nome as string,",
+				"          email as string,",
+				"          sexo as string,",
+				"          cidade as string,",
+				"          pais as string,",
+				"          codigo_pais as string,",
+				"          Time_zone as string,",
+				"          empresa as string,",
+				"          profissao as string,",
+				"          etnia as string,",
+				"          idioma as string,",
+				"          montadora as string,",
+				"          carro as string,",
+				"          ano as string,",
+				"          nascimento as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SRCCRMAR",
+				"SRCCRMAR select(mapColumn(",
+				"          id,",
+				"          primeiro_nome,",
+				"          ultimo_nome,",
+				"          email,",
+				"          sexo,",
+				"          cidade,",
+				"          pais,",
+				"          codigo_pais,",
+				"          Time_zone,",
+				"          empresa,",
+				"          profissao,",
+				"          idioma,",
+				"          montadora,",
+				"          carro,",
+				"          ano,",
+				"          data_nascimento = nascimento",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SELECIONARCOLUNAS",
+				"SELECIONARCOLUNAS split(ano <= '1970',",
+				"     ano > '1970',",
+				"     disjoint: false) ~> split1@(ATE1970, ACIMA1970)",
+				"split1@ATE1970 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1csvar",
+				"split1@ACIMA1970 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink2pacsvar"
+			]
+		}
+	}
+}

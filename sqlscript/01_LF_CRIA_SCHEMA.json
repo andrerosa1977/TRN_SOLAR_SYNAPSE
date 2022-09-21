@@ -1,0 +1,20 @@
+{
+	"name": "01_LF_CRIA_SCHEMA",
+	"properties": {
+		"folder": {
+			"name": "Lianderson"
+		},
+		"content": {
+			"query": "-- CRIAR SCHEMAS CAMADAS MEDALLION\nCREATE SCHEMA BRONZE\nGO\nCREATE SCHEMA SILVER\nGO\nCREATE SCHEMA GOLD\nGO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "Lianderson",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

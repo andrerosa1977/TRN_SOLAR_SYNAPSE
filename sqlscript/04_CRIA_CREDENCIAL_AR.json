@@ -1,0 +1,20 @@
+{
+	"name": "04_CRIA_CREDENCIAL_AR",
+	"properties": {
+		"folder": {
+			"name": "ANDRE/01_SERVERLESS"
+		},
+		"content": {
+			"query": "-- Create master key in databases with some password (one-off per database)\nUSE ANDRE;\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'TREINAMENTOSOLAR2022@!'\nGO\n\n--CRIAÇÃO DE CREDENTIAL\n--Entrar no datalake e gerar chave SAS\nUSE ANDRE;\nCREATE DATABASE SCOPED CREDENTIAL SASADLSTRNSOLAR\n WITH IDENTITY = 'SHARED ACCESS SIGNATURE',\n--GERADO SECRET VIA SAS\n SECRET = 'sp=racwdlmeop&st=2022-09-21T15:42:57Z&se=2022-10-31T23:42:57Z&spr=https&sv=2021-06-08&sr=c&sig=A2t4Gn%2F8PmPWawhPSd3PfsfC62QpDEGczCoga8Sx8vA%3D'\n GO\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "andre",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

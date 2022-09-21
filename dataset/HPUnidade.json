@@ -1,0 +1,26 @@
+{
+	"name": "HPUnidade",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OLTP_MINIERP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID_UNIDADE",
+				"type": "varchar"
+			},
+			{
+				"name": "DESC_UNIDADE",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "UNIDADE"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}
